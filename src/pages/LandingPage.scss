@@ -1,0 +1,318 @@
+// LandingPage.scss
+
+$neon-green: #39ff14;
+$electric-lime: #ccff00;
+$dark-green: #004d00;
+$gray-900: #111827;
+$gray-400: #9ca3af;
+$gray-300: #d1d5db;
+$black: #000;
+$white: #fff;
+
+.landing-page {
+  min-height: 100vh;
+
+  .section-hero {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba($neon-green, 0.1), rgba($electric-lime, 0.1));
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 6rem 1rem;
+      text-align: center;
+
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: $white;
+        margin-bottom: 1.5rem;
+
+        span {
+          display: block;
+          background: linear-gradient(to right, $neon-green, $electric-lime);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        @media (min-width: 768px) {
+          font-size: 4.5rem;
+        }
+      }
+
+      p {
+        font-size: 1.25rem;
+        color: $gray-300;
+        margin-bottom: 3rem;
+        max-width: 48rem;
+        margin-inline: auto;
+        line-height: 1.75;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width: 640px) {
+          flex-direction: row;
+        }
+
+        .qr-hint {
+          display: flex;
+          align-items: center;
+          color: $gray-300;
+
+          svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .features-section {
+    padding: 6rem 0;
+    background-color: rgba($black, 0.4);
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+
+      h2 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: $white;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: $gray-300;
+        font-size: 1.125rem;
+      }
+    }
+
+    .feature-box {
+      position: relative;
+      background: linear-gradient(to bottom right, rgba($gray-900, 0.85), rgba($dark-green, 0.25));
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba($neon-green, 0.2);
+      transition: all 0.4s ease;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      will-change: transform, box-shadow;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1.5rem;
+        background: linear-gradient(120deg, $neon-green, $electric-lime);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        mix-blend-mode: overlay;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 0.05;
+      }
+
+      &:hover {
+        border-color: rgba($neon-green, 0.4);
+        box-shadow: 0 12px 30px rgba($neon-green, 0.25);
+      }
+
+      &.consumer {
+        border-color: rgba($electric-lime, 0.2);
+
+        &:hover {
+          border-color: rgba($electric-lime, 0.4);
+          box-shadow: 0 12px 30px rgba($electric-lime, 0.25);
+        }
+      }
+
+      .feature-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        svg {
+          width: 3rem;
+          height: 3rem;
+          margin-right: 1rem;
+        }
+
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: $white;
+        }
+
+        p {
+          color: $gray-400;
+        }
+      }
+
+      ul {
+        margin-bottom: 2rem;
+
+        li {
+          display: flex;
+          align-items: center;
+          color: $gray-300;
+          margin-bottom: 1rem;
+
+          svg {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+        }
+      }
+
+      .feature-cta {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        background-color: rgba($neon-green, 0.2);
+        border: 1px solid $neon-green;
+        color: $neon-green;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: rgba($neon-green, 0.3);
+        }
+      }
+
+      .qr-instruction {
+        color: $electric-lime;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .how-it-works {
+    padding: 6rem 0;
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+
+      h2 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: $white;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: $gray-300;
+        font-size: 1.125rem;
+      }
+    }
+
+    .step {
+      text-align: center;
+      transition: all 0.3s ease;
+
+      .icon {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 9999px;
+        margin-bottom: 1.5rem;
+
+        &.green {
+          background-color: rgba($neon-green, 0.2);
+
+          &:hover {
+            background-color: rgba($neon-green, 0.3);
+          }
+
+          svg {
+            color: $neon-green;
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+
+        &.lime {
+          background-color: rgba($electric-lime, 0.2);
+
+          &:hover {
+            background-color: rgba($electric-lime, 0.3);
+          }
+
+          svg {
+            color: $electric-lime;
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $white;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: $gray-400;
+      }
+    }
+  }
+
+  footer {
+    background-color: rgba($black, 0.6);
+    border-top: 1px solid rgba($neon-green, 0.2);
+    padding: 3rem 1rem;
+    text-align: center;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: $neon-green;
+      }
+
+      span {
+        font-size: 1.25rem;
+        font-weight: 700;
+        background: linear-gradient(to right, $neon-green, $electric-lime);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    p {
+      color: $gray-400;
+    }
+  }
+}
