@@ -1,15 +1,13 @@
+// --- Variables ---
 $bg-color: #000;
 $text-color: #fff;
-$logo-width: 120px;
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Nosifer&display=swap');
+$logo-width: 280px;
 
 .logo-animation {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-
   height: 100vh;
   background: $bg-color;
   display: flex;
@@ -17,6 +15,7 @@ $logo-width: 120px;
   align-items: center;
   z-index: 9999;
   padding: 1rem;
+  overflow: hidden;
 
   .logo-container {
     display: flex;
@@ -26,62 +25,32 @@ $logo-width: 120px;
 
     .logo {
       width: $logo-width;
-      max-width: 20vw;
+      max-width: clamp(120px, 40vw, 400px); // ✅ Responsive scaling based on screen size
       animation: logoFade 1.2s ease-in-out forwards;
       animation-delay: 0.3s;
       opacity: 0;
+      transform: scale(0.8);
 
-      @media (max-width: 768px) {
-        max-width: 18vw;
-      }
-
+      // Optional: handle very small screens with fine-tuned scaling
       @media (max-width: 480px) {
-        max-width: 16vw;
+        transform: scale(0.9);
       }
 
       @media (max-width: 360px) {
-        max-width: 14vw;
-      }
-    }
-
-    .logo-text {
-      color: $text-color;
-      font-size: 2rem;
-      margin-top: 1rem;
-      animation: textFade 1s ease-in-out forwards;
-      animation-delay: 0.8s;
-      opacity: 0;
-      font-family: 'Nosifer', cursive;
-      text-transform: uppercase;
-      background: linear-gradient(to right, #ffffff, #0fc9de);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-      text-align: center;
-
-      @media (max-width: 768px) {
-        font-size: 1.2rem;
-      }
-
-      @media (max-width: 480px) {
-        font-size: 1rem;
-      }
-
-      @media (max-width: 360px) {
-        font-size: 0.85rem;
+        max-width: clamp(100px, 60vw, 200px);
+        transform: scale(1);
       }
     }
   }
 }
 
 @keyframes logoFade {
-  to {
-    opacity: 1;
+  from {
+    opacity: 0;
+    transform: scale(0.8);
   }
-}
-
-@keyframes textFade {
   to {
     opacity: 1;
+    transform: scale(1);
   }
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QR Code Generator - TraceGreen</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+
+  <h1>TraceGreen QR Code Generator</h1>
+
+  <form method="POST" action="generate.php">
+    <label for="text">Enter Product URL or Text</label>
+    <textarea id="text" name="text" placeholder="https://tracegreen.io/product/0xabc123..." required></textarea>
+    <button type="submit">Generate QR Code</button>
+  </form>
+
+  <?php if (isset($_GET['success'])): ?>
+    <h2>Your QR Code</h2>
+    <img src="qr-code.png?<?php echo time(); ?>" alt="Generated QR Code" width="300" />
+    <br />
+    <a href="qr-code.png" download>⬇ Download QR Code</a>
+  <?php endif; ?>
+
+</body>
+</html>
