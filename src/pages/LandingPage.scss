@@ -1,17 +1,127 @@
 // LandingPage.scss
 
+// --- Updated Color Palette ---
 $neon-green: #39ff14;
-$electric-lime: #ccff00;
-$dark-green: #004d00;
-$gray-900: #111827;
-$gray-400: #9ca3af;
+$lime-accent: #a6ff00;
+$deep-green: #003c0e;
+$cyber-blue: #00c4ff;
+$slate-900: #0f172a;
+$gray-500: #6b7280;
 $gray-300: #d1d5db;
+$gray-100: #f3f4f6;
 $black: #000;
 $white: #fff;
 
+// --- General Layout ---
 .landing-page {
   min-height: 100vh;
+  background-color: $slate-900;
 
+  // --- NAVBAR ---
+  .navbar {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    max-width: 90rem;
+    padding: 0.75rem 2rem;
+    background: rgba($slate-900, 0.6);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba($cyber-blue, 0.2);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 50;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      svg {
+        width: 1.75rem;
+        height: 1.75rem;
+        color: $neon-green;
+      }
+
+      span {
+        font-size: 1.25rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, $neon-green, $lime-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+
+      a {
+        font-size: 1rem;
+        font-weight: 500;
+        color: $gray-300;
+        position: relative;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $neon-green;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.25rem;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: linear-gradient(to right, $neon-green, $lime-accent);
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+
+    .nav-cta {
+      padding: 0.5rem 1rem;
+      background-color: rgba($cyber-blue, 0.2);
+      border: 1px solid $cyber-blue;
+      color: $white;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba($cyber-blue, 0.4);
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .nav-cta {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  // --- HERO SECTION ---
   .section-hero {
     position: relative;
     overflow: hidden;
@@ -20,7 +130,7 @@ $white: #fff;
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba($neon-green, 0.1), rgba($electric-lime, 0.1));
+      background: linear-gradient(to right, rgba($cyber-blue, 0.08), rgba($neon-green, 0.1));
       z-index: 0;
     }
 
@@ -28,7 +138,7 @@ $white: #fff;
       position: relative;
       max-width: 80rem;
       margin: 0 auto;
-      padding: 6rem 1rem;
+      padding: 8rem 1rem 6rem;
       text-align: center;
 
       h1 {
@@ -39,7 +149,7 @@ $white: #fff;
 
         span {
           display: block;
-          background: linear-gradient(to right, $neon-green, $electric-lime);
+          background: linear-gradient(to right, $neon-green, $lime-accent);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -84,9 +194,10 @@ $white: #fff;
     }
   }
 
+  // --- FEATURES ---
   .features-section {
     padding: 6rem 0;
-    background-color: rgba($black, 0.4);
+    background-color: rgba($slate-900, 0.8);
 
     .section-header {
       text-align: center;
@@ -107,21 +218,18 @@ $white: #fff;
 
     .feature-box {
       position: relative;
-      background: linear-gradient(to bottom right, rgba($gray-900, 0.85), rgba($dark-green, 0.25));
+      background: linear-gradient(to bottom right, rgba($slate-900, 0.85), rgba($deep-green, 0.2));
       padding: 2rem;
       border-radius: 1.5rem;
-      border: 1px solid rgba($neon-green, 0.2);
+      border: 1px solid rgba($cyber-blue, 0.15);
       transition: all 0.4s ease;
-      transform-style: preserve-3d;
-      perspective: 1200px;
-      will-change: transform, box-shadow;
 
       &::before {
         content: '';
         position: absolute;
         inset: 0;
         border-radius: 1.5rem;
-        background: linear-gradient(120deg, $neon-green, $electric-lime);
+        background: linear-gradient(120deg, $neon-green, $lime-accent);
         opacity: 0;
         transition: opacity 0.3s ease;
         mix-blend-mode: overlay;
@@ -130,20 +238,20 @@ $white: #fff;
       }
 
       &:hover::before {
-        opacity: 0.05;
+        opacity: 0.06;
       }
 
       &:hover {
-        border-color: rgba($neon-green, 0.4);
-        box-shadow: 0 12px 30px rgba($neon-green, 0.25);
+        border-color: rgba($cyber-blue, 0.3);
+        box-shadow: 0 12px 30px rgba($cyber-blue, 0.2);
       }
 
       &.consumer {
-        border-color: rgba($electric-lime, 0.2);
+        border-color: rgba($lime-accent, 0.2);
 
         &:hover {
-          border-color: rgba($electric-lime, 0.4);
-          box-shadow: 0 12px 30px rgba($electric-lime, 0.25);
+          border-color: rgba($lime-accent, 0.4);
+          box-shadow: 0 12px 30px rgba($lime-accent, 0.25);
         }
       }
 
@@ -156,6 +264,7 @@ $white: #fff;
           width: 3rem;
           height: 3rem;
           margin-right: 1rem;
+          color: $cyber-blue;
         }
 
         h3 {
@@ -165,7 +274,7 @@ $white: #fff;
         }
 
         p {
-          color: $gray-400;
+          color: $gray-500;
         }
       }
 
@@ -182,6 +291,7 @@ $white: #fff;
             margin-right: 0.75rem;
             width: 1.25rem;
             height: 1.25rem;
+            color: $lime-accent;
           }
         }
       }
@@ -190,24 +300,25 @@ $white: #fff;
         display: inline-flex;
         align-items: center;
         padding: 0.75rem 1.5rem;
-        background-color: rgba($neon-green, 0.2);
-        border: 1px solid $neon-green;
-        color: $neon-green;
+        background-color: rgba($cyber-blue, 0.15);
+        border: 1px solid $cyber-blue;
+        color: $cyber-blue;
         border-radius: 0.5rem;
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: rgba($neon-green, 0.3);
+          background-color: rgba($cyber-blue, 0.25);
         }
       }
 
       .qr-instruction {
-        color: $electric-lime;
+        color: $lime-accent;
         font-weight: 500;
       }
     }
   }
 
+  // --- HOW IT WORKS ---
   .how-it-works {
     padding: 6rem 0;
 
@@ -242,10 +353,10 @@ $white: #fff;
         margin-bottom: 1.5rem;
 
         &.green {
-          background-color: rgba($neon-green, 0.2);
+          background-color: rgba($neon-green, 0.15);
 
           &:hover {
-            background-color: rgba($neon-green, 0.3);
+            background-color: rgba($neon-green, 0.25);
           }
 
           svg {
@@ -256,14 +367,14 @@ $white: #fff;
         }
 
         &.lime {
-          background-color: rgba($electric-lime, 0.2);
+          background-color: rgba($lime-accent, 0.15);
 
           &:hover {
-            background-color: rgba($electric-lime, 0.3);
+            background-color: rgba($lime-accent, 0.25);
           }
 
           svg {
-            color: $electric-lime;
+            color: $lime-accent;
             width: 2rem;
             height: 2rem;
           }
@@ -278,41 +389,203 @@ $white: #fff;
       }
 
       p {
-        color: $gray-400;
+        color: $gray-500;
       }
     }
   }
 
+  // --- FOOTER ---
   footer {
-    background-color: rgba($black, 0.6);
-    border-top: 1px solid rgba($neon-green, 0.2);
-    padding: 3rem 1rem;
+    position: relative;
+    background: linear-gradient(to top, rgba($slate-900, 0.95), rgba($slate-900, 0.7));
+    border-top: 2px solid rgba($cyber-blue, 0.25);
+    backdrop-filter: blur(12px);
+    padding: 4rem 1.5rem 2rem;
     text-align: center;
+    color: $gray-300;
 
-    .logo {
+    .footer-content {
+      max-width: 80rem;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+      flex-direction: column;
+      gap: 2rem;
 
-      svg {
-        width: 1.5rem;
-        height: 1.5rem;
-        color: $neon-green;
+      @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
       }
 
-      span {
-        font-size: 1.25rem;
-        font-weight: 700;
-        background: linear-gradient(to right, $neon-green, $electric-lime);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          color: $neon-green;
+        }
+
+        span {
+          font-size: 1.25rem;
+          font-weight: 700;
+          background: linear-gradient(to right, $neon-green, $lime-accent);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        a {
+          color: $gray-300;
+          font-size: 0.95rem;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: $neon-green;
+          }
+        }
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 9999px;
+          background-color: rgba($cyber-blue, 0.1);
+          color: $cyber-blue;
+          transition: all 0.3s ease;
+
+          svg {
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+
+          &:hover {
+            background-color: rgba($cyber-blue, 0.25);
+          }
+        }
       }
     }
 
-    p {
-      color: $gray-400;
+    .copyright {
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: $gray-500;
     }
+  }
+}
+.footer-container {
+  background: linear-gradient(to top, rgba($slate-900, 0.9), rgba($slate-900, 0.7));
+  border-top: 1px solid rgba($cyber-blue, 0.2);
+  backdrop-filter: blur(12px);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  color: $gray-300;
+
+  .footer-content {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-left {
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          color: $neon-green;
+        }
+
+        span {
+          font-size: 1.25rem;
+          font-weight: 700;
+          background: linear-gradient(to right, $neon-green, $lime-accent);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      .footer-tagline {
+        font-size: 0.95rem;
+        color: $gray-500;
+        max-width: 22rem;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+
+      a {
+        font-size: 0.95rem;
+        color: $gray-300;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $neon-green;
+        }
+      }
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: rgba($cyber-blue, 0.15);
+        color: $cyber-blue;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: rgba($cyber-blue, 0.25);
+        }
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .footer-copy {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: $gray-500;
   }
 }

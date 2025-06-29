@@ -8,42 +8,41 @@ import {
   Award,
   Users,
   Camera,
+  Twitter,
+  Github,
+  Linkedin,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import StarBorder from './StarBorder';
 import './LandingPage.scss';
 
-// Animated QR Instruction Box
-const QRInstruction = () => {
-  return (
-    <motion.div
-      className="flex items-center justify-center gap-3 px-4 py-2 rounded-xl text-white shadow-md backdrop-blur-md border border-white/10 text-sm md:text-base"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 12 }}
-    >
-      <Camera size={18} />
-      <span>Use your camera to scan QR codes</span>
-    </motion.div>
-  );
-};
+// QR Instruction Box
+const QRInstruction = () => (
+  <motion.div
+    className="flex items-center justify-center gap-3 px-4 py-2 rounded-xl text-white shadow-md backdrop-blur-md border border-white/10 text-sm md:text-base"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ type: 'spring', stiffness: 100, damping: 12 }}
+  >
+    <Camera size={18} />
+    <span>Use your camera to scan QR codes</span>
+  </motion.div>
+);
 
-// Reusable Styled CTA Button
-const GetStartedCTA = () => {
-  return (
-    <motion.div
-      className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-white shadow-md backdrop-blur-md border border-white/10 text-sm md:text-base cursor-pointer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 12 }}
-    >
-      <Link to="/manufacturer/auth" className="flex items-center gap-2 text-white no-underline">
-        🚀 <span>Get Started</span>
-      </Link>
-    </motion.div>
-  );
-};
+// Reusable CTA Button
+const GetStartedCTA = () => (
+  <motion.div
+    className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-white shadow-md backdrop-blur-md border border-white/10 text-sm md:text-base cursor-pointer"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ type: 'spring', stiffness: 100, damping: 12 }}
+  >
+    <Link to="/manufacturer/auth" className="flex items-center gap-2 text-white no-underline">
+      🚀 <span>Get Started</span>
+    </Link>
+  </motion.div>
+);
 
 const LandingPage = () => {
   return (
@@ -178,13 +177,61 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="logo">
-          <Leaf />
-          <span>TraceGreen</span>
-        </div>
-        <p>Empowering sustainable choices through blockchain transparency</p>
+      {/* Modern Footer */}
+      <footer className="footer-container">
+        <motion.div
+          className="footer-content"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="footer-left">
+            <div className="logo">
+              <Leaf />
+              <span>TraceGreen</span>
+            </div>
+            <p className="footer-tagline">
+              Empowering sustainable choices through blockchain transparency.
+            </p>
+          </div>
+
+          <div className="footer-links">
+            <Link to="#features">Features</Link>
+            <Link to="#how-it-works">How It Works</Link>
+            <Link to="#about">About</Link>
+            <Link to="#contact">Contact</Link>
+          </div>
+
+          <div className="footer-socials">
+            <a
+              href="https://x.com/sunalsaha5656"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+            >
+              <Twitter size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sunal-saha-9b258128b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="https://github.com/Sunalsaha"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <Github size={18} />
+            </a>
+          </div>
+        </motion.div>
+
+        <p className="footer-copy">© 2025 TraceGreen. All rights reserved.</p>
       </footer>
     </div>
   );
