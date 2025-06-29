@@ -12,7 +12,8 @@ import ProductView from './pages/ProductView';
 import ProductComparison from './pages/ProductComparison';
 import VerificationPage from './pages/VerificationPage';
 import QRCodeGenerator from './pages/QRCodeGenerator';
-import LogoAnimation from './pages/logoanimation'; // ✅ Splash component
+import ProductDetails from './pages/ProductDetails'; // ✅ New Page for QR Scan View
+import LogoAnimation from './pages/logoanimation';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Show splash for 3 seconds
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -39,6 +40,7 @@ const App = () => {
               <Route path="/manufacturer/submit-product" element={<ProductSubmission />} />
               <Route path="/manufacturer/verification/:id" element={<VerificationPage />} />
               <Route path="/product/:hash" element={<ProductView />} />
+              <Route path="/product-details/:productId" element={<ProductDetails />} /> {/* ✅ Added Route */}
               <Route path="/compare" element={<ProductComparison />} />
               <Route path="/generate-qr" element={<QRCodeGenerator />} />
 
