@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-<<<<<<< HEAD
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:backend": "nodemon server.js",
+    "start:frontend": "vite",
+    "dev:full": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
   },
   "dependencies": {
     "axios": "^1.10.0",
@@ -21,26 +23,14 @@
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.344.0",
     "mongoose": "^8.16.1",
-=======
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "axios": "^1.10.0",
-    "framer-motion": "^12.19.2",
-    "lucide-react": "^0.344.0",
->>>>>>> a5c17cbae7e1f1f8d2678526138c2953a23e21e4
     "qrcode.react": "^4.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-qr-code": "^2.0.16",
     "react-router-dom": "^6.26.1",
-<<<<<<< HEAD
     "react-toastify": "^11.0.5",
     "sass": "^1.89.2",
     "twilio": "^5.7.1"
-=======
-    "sass": "^1.89.2"
->>>>>>> a5c17cbae7e1f1f8d2678526138c2953a23e21e4
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
@@ -48,15 +38,13 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.18",
+    "concurrently": "^8.2.2",
     "css-loader": "^7.1.2",
     "eslint": "^9.9.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
-<<<<<<< HEAD
     "nodemon": "^3.1.10",
-=======
->>>>>>> a5c17cbae7e1f1f8d2678526138c2953a23e21e4
     "postcss": "^8.4.35",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
@@ -64,7 +52,6 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.19"
-<<<<<<< HEAD
   },
   "description": "",
   "main": "eslint.config.js",
@@ -79,7 +66,4 @@
     "url": "https://github.com/Sunalsaha/TraceGreen/issues"
   },
   "homepage": "https://github.com/Sunalsaha/TraceGreen#readme"
-=======
-  }
->>>>>>> a5c17cbae7e1f1f8d2678526138c2953a23e21e4
 }
