@@ -59,7 +59,10 @@
         .form-group {
           display: flex;
           flex-direction: column;
+<<<<<<< HEAD
           position: relative;
+=======
+>>>>>>> a5c17cbae7e1f1f8d2678526138c2953a23e21e4
 
           label {
             display: flex;
@@ -100,6 +103,7 @@
 
             transition: all 0.2s ease;
           }
+<<<<<<< HEAD
 
           svg {
             position: absolute;
@@ -137,6 +141,8 @@
               margin-left: 0.5rem;
             }
           }
+=======
+>>>>>>> a5c17cbae7e1f1f8d2678526138c2953a23e21e4
         }
 
         .submit-btn {
@@ -178,6 +184,7 @@
     }
   }
 }
+<<<<<<< HEAD
 
 // Responsive Additions
 @media screen and (max-width: 768px) {
@@ -345,3 +352,5 @@
   75% { transform: translateX(-5px); }
   100% { transform: translateX(0); }
 }
+=======
+>>>>>>> a5c17cbae7e1f1f8d2678526138c2953a23e21e4
